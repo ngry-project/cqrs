@@ -1,0 +1,28 @@
+{
+  "name": "@ngry-project/cqrs",
+  "version": "10.0.0",
+  "keywords": [
+    "angular",
+    "translate"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ngry-project/cqrs"
+  },
+  "maintainers": [
+    {
+      "name": "Alex Chugaev",
+      "url": "https://github.com/avchugaev"
+    }
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@angular/common": "^10.0.14",
+    "@angular/core": "^10.0.14"
+  },
+  "dependencies": {
+    "tslib": "^2.1.0"
+  }
+}
