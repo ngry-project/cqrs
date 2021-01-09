@@ -1,27 +1,38 @@
-# Cqrs
+![Continuous Integration](https://github.com/ngry-project/cqrs/workflows/CI/badge.svg?branch=master)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.8.
+## Description
 
-## Development server
+Lightweight CQRS module for Angular.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Installation
 
-## Code scaffolding
+```bash
+npm i @ngry/cqrs
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Quick Start
 
-## Build
+**Getting Started**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+* [Quick Start](https://github.com/ngry-project/cqrs/wiki/Quick-Start)
 
-## Running unit tests
+**Documentation**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* [What is CQRS](https://github.com/ngry-project/cqrs/wiki/What-is-CQRS)
+* [Commands and command handlers](https://github.com/ngry-project/cqrs/wiki/Commands-and-command-handlers)
+* [Queries and query handlers](https://github.com/ngry-project/cqrs/wiki/Queries-and-query-handlers)
+* [Events and event handlers](https://github.com/ngry-project/cqrs/wiki/Events-and-event-handlers)
+* [Sagas](https://github.com/ngry-project/cqrs/wiki/Sagas)
+* [Error handling](https://github.com/ngry-project/cqrs/wiki/Error-handling)
 
-## Running end-to-end tests
+**Examples**
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+* [3 steps saving process](https://github.com/ngry-project/cqrs/wiki/Example:-3-steps-saving-process)
 
-## Further help
+## Stay in Touch
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- [GitHub Discussions](https://github.com/ngry-project/cqrs/discussions)
+
+## License
+
+MIT
