@@ -1,5 +1,5 @@
 {
-  "name": "@ngry-project/cqrs",
+  "name": "@ngry/cqrs",
   "version": "10.0.0",
   "keywords": [
     "angular",

@@ -1,0 +1,49 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Publish to NPM
+
+on:
+  release:
+    types: [ created ]
+
+jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js 15
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15
+      - name: Install dependencies
+        run: npm ci
+
+  test:
+    needs: checkout
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run tests
+        run: npm test
+
+  lint:
+    needs: checkout
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check code style
+        run: npm lint
+
+  build:
+    needs: [ test, lint ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build package(s)
+        run: npm run build
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish
+        run: echo Publishing...
