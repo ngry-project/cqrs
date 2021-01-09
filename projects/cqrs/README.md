@@ -1,24 +1,38 @@
-# Cqrs
+![Continuous Integration](https://github.com/ngry-project/cqrs/workflows/CI/badge.svg?branch=master)
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.14.
+## Description
 
-## Code scaffolding
+Lightweight CQRS module for Angular.
 
-Run `ng generate component component-name --project cqrs` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project cqrs`.
-> Note: Don't forget to add `--project cqrs` or else it will be added to the default project in your `angular.json` file. 
+## Installation
 
-## Build
+```bash
+npm i @ngry/cqrs
+```
 
-Run `ng build cqrs` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Quick Start
 
-## Publishing
+**Getting Started**
 
-After building your library with `ng build cqrs`, go to the dist folder `cd dist/cqrs` and run `npm publish`.
+* [Quick Started](https://github.com/ngry-project/cqrs/wiki/Quick-Start)
 
-## Running unit tests
+**Documentation**
 
-Run `ng test cqrs` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* [What is CQRS](https://github.com/ngry-project/cqrs/wiki/What-is-CQRS)
+* [Commands and command handlers](https://github.com/ngry-project/cqrs/wiki/Commands-and-command-handlers)
+* [Queries and query handlers](https://github.com/ngry-project/cqrs/wiki/Queries-and-query-handlers)
+* [Events and event handlers](https://github.com/ngry-project/cqrs/wiki/Events-and-event-handlers)
+* [Sagas](https://github.com/ngry-project/cqrs/wiki/Sagas)
+* [Error handling](https://github.com/ngry-project/cqrs/wiki/Error-handling)
 
-## Further help
+**Examples**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+* [3 steps saving process](https://github.com/ngry-project/cqrs/wiki/Example:-3-steps-saving-process)
+
+## Stay in Touch
+
+- [GitHub Discussions](https://github.com/ngry-project/cqrs/discussions)
+
+## License
+
+MIT
