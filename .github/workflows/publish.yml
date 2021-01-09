@@ -8,7 +8,7 @@ on:
     types: [ created ]
 
 jobs:
-  checkout:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -22,30 +22,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-  test:
-    needs: checkout
-    runs-on: ubuntu-latest
-    steps:
       - name: Run tests
         run: npm test
 
-  lint:
-    needs: checkout
-    runs-on: ubuntu-latest
-    steps:
       - name: Check code style
         run: npm run lint
 
-  build:
-    needs: [ test, lint ]
-    runs-on: ubuntu-latest
-    steps:
       - name: Build package(s)
         run: npm run build
 
-  publish:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Publish
         run: echo Publishing...
