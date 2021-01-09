@@ -1,9 +1,17 @@
 {
   "name": "@ngry/cqrs",
-  "version": "10.0.0",
+  "description": "Lightweight and efficient CQRS framework for Angular",
+  "version": "10.0.1",
   "keywords": [
     "angular",
-    "translate"
+    "cqrs",
+    "eventbus",
+    "commandbus",
+    "querybus",
+    "event",
+    "command",
+    "query",
+    "saga"
   ],
   "repository": {
     "type": "git",
