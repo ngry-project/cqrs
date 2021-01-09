@@ -14,7 +14,7 @@ npm i @ngry/cqrs
 
 **Getting Started**
 
-* [Quick Started](https://github.com/ngry-project/cqrs/wiki/Quick-Start)
+* [Quick Start](https://github.com/ngry-project/cqrs/wiki/Quick-Start)
 
 **Documentation**
 
