@@ -15,7 +15,7 @@ export class ErrorHandlerRegistry {
     throw new Error(`No error handler found for error of type ${error.constructor.name}`);
   }
 
-  register(handler: ErrorHandler) {
+  register(handler: ErrorHandler): void {
     if (this.handlers.has(handler)) {
       throw new Error(`${handler.constructor.name} already registered`);
     }

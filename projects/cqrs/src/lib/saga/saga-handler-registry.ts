@@ -14,7 +14,7 @@ export class SagaHandlerRegistry {
   ) {
   }
 
-  register(saga: Saga) {
+  register(saga: Saga): void {
     saga.transform(this.eventBus.events).pipe(
       mergeMap(async command => {
         try {

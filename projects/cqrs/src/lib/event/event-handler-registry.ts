@@ -22,7 +22,7 @@ export class EventHandlerRegistry {
     return handlers;
   }
 
-  register(handler: EventHandler) {
+  register(handler: EventHandler): void {
     if (this.handlers.has(handler)) {
       throw new Error(`${handler.constructor.name} already registered`);
     }
