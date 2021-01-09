@@ -11,6 +11,9 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
+      - name: Print release version
+        run: echo ${{ github.ref }}
+
       - name: Checkout
         uses: actions/checkout@v2
 
