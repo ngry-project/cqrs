@@ -13,10 +13,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Use Node.js 15
         uses: actions/setup-node@v1
         with:
           node-version: 15
+
       - name: Install dependencies
         run: npm ci
 
@@ -32,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check code style
-        run: npm lint
+        run: npm run lint
 
   build:
     needs: [ test, lint ]
