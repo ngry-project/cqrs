@@ -1,6 +1,8 @@
 ![build](https://github.com/ngry-project/cqrs/workflows/build/badge.svg?branch=master)
 ![unit-tests](https://github.com/ngry-project/cqrs/workflows/unit-tests/badge.svg?branch=master)
 ![code-style](https://github.com/ngry-project/cqrs/workflows/code-style/badge.svg?branch=master)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/ngry-project/cqrs?logo=github)
+![npm (scoped)](https://img.shields.io/npm/v/@ngry/cqrs?logo=npm)
 
 ## Description
 
