@@ -3,6 +3,7 @@
 ![code-style](https://github.com/ngry-project/cqrs/workflows/code-style/badge.svg?branch=master)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ngry-project/cqrs?logo=github)
 ![npm (scoped)](https://img.shields.io/npm/v/@ngry/cqrs?logo=npm)
+![Coveralls github](https://img.shields.io/coveralls/github/ngry-project/cqrs?logo=jest)
 
 ## Description
 
