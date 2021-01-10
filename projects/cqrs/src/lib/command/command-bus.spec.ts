@@ -4,25 +4,25 @@ import { CqrsModule } from '../cqrs.module';
 import { CommandBus } from './command-bus';
 import { CommandHandler } from './command-handler';
 
-class SaveCommand {
+class ExampleCommand {
   constructor(
-    readonly data: string
+    readonly data: string,
   ) {
   }
 }
 
 @Injectable()
-class SaveHandler implements CommandHandler<SaveCommand> {
-  readonly handles = SaveCommand;
+class ExampleCommandHandler implements CommandHandler<ExampleCommand> {
+  readonly handles = ExampleCommand;
 
-  execute(command: SaveCommand): Promise<void> {
+  execute(command: ExampleCommand): Promise<void> {
     return Promise.resolve(undefined);
   }
 }
 
 describe('CommandBus', () => {
   let commandBus: CommandBus;
-  let handler: SaveHandler;
+  let handler: ExampleCommandHandler;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -30,37 +30,37 @@ describe('CommandBus', () => {
         CqrsModule.forRoot(),
         CqrsModule.forFeature({
           commands: [
-            SaveHandler
-          ]
-        })
-      ]
+            ExampleCommandHandler,
+          ],
+        }),
+      ],
     }).compileComponents();
 
     commandBus = TestBed.inject(CommandBus);
-    handler = TestBed.inject(SaveHandler);
+    handler = TestBed.inject(ExampleCommandHandler);
 
     expect(commandBus).toBeInstanceOf(CommandBus);
-    expect(handler).toBeInstanceOf(SaveHandler);
+    expect(handler).toBeInstanceOf(ExampleCommandHandler);
   });
 
-  it('should execute the command', async () => {
+  it('should execute command using corresponding command handler', async () => {
     const executeMethod = spyOn(handler, 'execute').and.callThrough();
 
-    await commandBus.execute(new SaveCommand('One'));
+    await commandBus.execute(new ExampleCommand('One'));
 
     expect(executeMethod).toHaveBeenCalledTimes(1);
-    expect(executeMethod).toHaveBeenLastCalledWith(new SaveCommand('One'));
+    expect(executeMethod).toHaveBeenLastCalledWith(new ExampleCommand('One'));
 
 
-    await commandBus.execute(new SaveCommand('Two'));
+    await commandBus.execute(new ExampleCommand('Two'));
 
     expect(executeMethod).toHaveBeenCalledTimes(2);
-    expect(executeMethod).toHaveBeenLastCalledWith(new SaveCommand('Two'));
+    expect(executeMethod).toHaveBeenLastCalledWith(new ExampleCommand('Two'));
 
 
-    await commandBus.execute(new SaveCommand('Three'));
+    await commandBus.execute(new ExampleCommand('Three'));
 
     expect(executeMethod).toHaveBeenCalledTimes(3);
-    expect(executeMethod).toHaveBeenLastCalledWith(new SaveCommand('Three'));
+    expect(executeMethod).toHaveBeenLastCalledWith(new ExampleCommand('Three'));
   });
 });
