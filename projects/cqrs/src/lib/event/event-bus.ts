@@ -14,13 +14,13 @@ export class EventBus {
   ) {
   }
 
-  publish(event: IEvent): void {
-    this._events.next(event);
-
+  async publish(event: IEvent): Promise<void> {
     const handlers = this.registry.of(event);
 
-    for (const handler of handlers) {
-      handler.handle(event);
+    if (handlers.size > 0) {
+      await Promise.all([...handlers].map(handler => handler.handle(event)));
     }
+
+    this._events.next(event);
   }
 }
