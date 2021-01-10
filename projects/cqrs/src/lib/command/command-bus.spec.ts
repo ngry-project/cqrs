@@ -4,63 +4,97 @@ import { CqrsModule } from '../cqrs.module';
 import { CommandBus } from './command-bus';
 import { CommandHandler } from './command-handler';
 
-class SaveCommand {
+class ExampleCommand {
   constructor(
-    readonly data: string
+    readonly data: string,
   ) {
   }
 }
 
 @Injectable()
-class SaveHandler implements CommandHandler<SaveCommand> {
-  readonly handles = SaveCommand;
+class ExampleCommandHandler implements CommandHandler<ExampleCommand> {
+  readonly handles = ExampleCommand;
 
-  execute(command: SaveCommand): Promise<void> {
+  execute(command: ExampleCommand): Promise<void> {
+    return Promise.resolve(undefined);
+  }
+}
+
+@Injectable()
+class SecondExampleCommandHandler implements CommandHandler<ExampleCommand> {
+  readonly handles = ExampleCommand;
+
+  execute(command: ExampleCommand): Promise<void> {
     return Promise.resolve(undefined);
   }
 }
 
 describe('CommandBus', () => {
-  let commandBus: CommandBus;
-  let handler: SaveHandler;
+  describe('execute', () => {
+    it('should execute the command using corresponding command handler', async () => {
+      await TestBed.configureTestingModule({
+        imports: [
+          CqrsModule.forRoot(),
+          CqrsModule.forFeature({
+            commands: [
+              ExampleCommandHandler,
+            ],
+          }),
+        ],
+      }).compileComponents();
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        CqrsModule.forRoot(),
-        CqrsModule.forFeature({
-          commands: [
-            SaveHandler
-          ]
-        })
-      ]
-    }).compileComponents();
+      const commandBus = TestBed.inject(CommandBus);
+      const handler = TestBed.inject(ExampleCommandHandler);
 
-    commandBus = TestBed.inject(CommandBus);
-    handler = TestBed.inject(SaveHandler);
+      const executeMethod = spyOn(handler, 'execute').and.callThrough();
 
-    expect(commandBus).toBeInstanceOf(CommandBus);
-    expect(handler).toBeInstanceOf(SaveHandler);
-  });
+      await commandBus.execute(new ExampleCommand('One'));
 
-  it('should execute the command', async () => {
-    const executeMethod = spyOn(handler, 'execute').and.callThrough();
-
-    await commandBus.execute(new SaveCommand('One'));
-
-    expect(executeMethod).toHaveBeenCalledTimes(1);
-    expect(executeMethod).toHaveBeenLastCalledWith(new SaveCommand('One'));
+      expect(executeMethod).toHaveBeenCalledTimes(1);
+      expect(executeMethod).toHaveBeenLastCalledWith(new ExampleCommand('One'));
 
 
-    await commandBus.execute(new SaveCommand('Two'));
+      await commandBus.execute(new ExampleCommand('Two'));
 
-    expect(executeMethod).toHaveBeenCalledTimes(2);
-    expect(executeMethod).toHaveBeenLastCalledWith(new SaveCommand('Two'));
+      expect(executeMethod).toHaveBeenCalledTimes(2);
+      expect(executeMethod).toHaveBeenLastCalledWith(new ExampleCommand('Two'));
 
 
-    await commandBus.execute(new SaveCommand('Three'));
+      await commandBus.execute(new ExampleCommand('Three'));
 
-    expect(executeMethod).toHaveBeenCalledTimes(3);
-    expect(executeMethod).toHaveBeenLastCalledWith(new SaveCommand('Three'));
+      expect(executeMethod).toHaveBeenCalledTimes(3);
+      expect(executeMethod).toHaveBeenLastCalledWith(new ExampleCommand('Three'));
+    });
+
+    it('should throw an error when the command has no handler', async () => {
+      await TestBed.configureTestingModule({
+        imports: [
+          CqrsModule.forRoot(),
+          CqrsModule.forFeature({}),
+        ],
+      }).compileComponents();
+
+      const commandBus = TestBed.inject(CommandBus);
+
+      await expect(commandBus.execute(new ExampleCommand('One'))).rejects.toThrow('No command handler found for command of type ExampleCommand');
+    });
+
+    it('should throw an error when the command has multiple handlers', async () => {
+      await TestBed.configureTestingModule({
+        imports: [
+          CqrsModule.forRoot(),
+          CqrsModule.forFeature({
+            commands: [
+              ExampleCommandHandler,
+              SecondExampleCommandHandler
+            ],
+          }),
+        ],
+      }).compileComponents();
+
+      const commandBus = TestBed.inject(CommandBus);
+
+      await expect(commandBus.execute(new ExampleCommand('One'))).rejects.toThrow('More than one command handlers found for command of type ExampleCommand');
+    });
   });
 });

@@ -8,10 +8,6 @@ export * from './lib/command/command-handler';
 
 export * from './lib/event/event.interface';
 export * from './lib/event/event-bus';
-export * from './lib/event/event-handler';
-
-export * from './lib/error/error-bus';
-export * from './lib/error/error-handler';
 
 export * from './lib/query/query.interface';
 export * from './lib/query/query-bus';
