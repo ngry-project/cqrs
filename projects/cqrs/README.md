@@ -12,7 +12,7 @@ Lightweight CQRS module for Angular.
 npm i @ngry/cqrs
 ```
 
-## Quick Start
+## Documentation
 
 **Getting Started**
 
