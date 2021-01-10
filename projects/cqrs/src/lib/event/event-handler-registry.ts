@@ -15,10 +15,6 @@ export class EventHandlerRegistry {
       }
     }
 
-    if (handlers.size === 0) {
-      throw new Error(`No event handlers found for event of type ${event.constructor.name}`);
-    }
-
     return handlers;
   }
 
