@@ -37,7 +37,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@angular-builders/jest": "^11.0.0",
+    "@angular-builders/jest": "^10.0.1",
     "@angular/cli": "~10.0.8",
     "@angular/compiler": "~10.0.14",
     "@angular/compiler-cli": "~10.0.14",
