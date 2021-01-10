@@ -48,27 +48,29 @@ describe('QueryBus', () => {
     expect(handler).toBeInstanceOf(ExampleQueryHandler);
   });
 
-  it('should execute queries using corresponding query handler', async () => {
-    const executeMethod = spyOn(handler, 'execute').and.callThrough();
+  describe('execute', () => {
+    it('should execute queries using corresponding query handler', async () => {
+      const executeMethod = spyOn(handler, 'execute').and.callThrough();
 
-    const first = await queryBus.execute(new ExampleQuery('One'));
+      const first = await queryBus.execute(new ExampleQuery('One'));
 
-    expect(executeMethod).toHaveBeenCalledTimes(1);
-    expect(executeMethod).toHaveBeenLastCalledWith(new ExampleQuery('One'));
-    expect(first).toEqual(['One', 'One', 'One']);
-
-
-    const second = await queryBus.execute(new ExampleQuery('Two'));
-
-    expect(executeMethod).toHaveBeenCalledTimes(2);
-    expect(executeMethod).toHaveBeenLastCalledWith(new ExampleQuery('Two'));
-    expect(second).toEqual(['Two', 'Two', 'Two']);
+      expect(executeMethod).toHaveBeenCalledTimes(1);
+      expect(executeMethod).toHaveBeenLastCalledWith(new ExampleQuery('One'));
+      expect(first).toEqual(['One', 'One', 'One']);
 
 
-    const third = await queryBus.execute(new ExampleQuery('Three'));
+      const second = await queryBus.execute(new ExampleQuery('Two'));
 
-    expect(executeMethod).toHaveBeenCalledTimes(3);
-    expect(executeMethod).toHaveBeenLastCalledWith(new ExampleQuery('Three'));
-    expect(third).toEqual(['Three', 'Three', 'Three']);
+      expect(executeMethod).toHaveBeenCalledTimes(2);
+      expect(executeMethod).toHaveBeenLastCalledWith(new ExampleQuery('Two'));
+      expect(second).toEqual(['Two', 'Two', 'Two']);
+
+
+      const third = await queryBus.execute(new ExampleQuery('Three'));
+
+      expect(executeMethod).toHaveBeenCalledTimes(3);
+      expect(executeMethod).toHaveBeenLastCalledWith(new ExampleQuery('Three'));
+      expect(third).toEqual(['Three', 'Three', 'Three']);
+    });
   });
 });

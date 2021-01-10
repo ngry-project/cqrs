@@ -43,24 +43,26 @@ describe('CommandBus', () => {
     expect(handler).toBeInstanceOf(ExampleCommandHandler);
   });
 
-  it('should execute command using corresponding command handler', async () => {
-    const executeMethod = spyOn(handler, 'execute').and.callThrough();
+  describe('execute', () => {
+    it('should execute command using corresponding command handler', async () => {
+      const executeMethod = spyOn(handler, 'execute').and.callThrough();
 
-    await commandBus.execute(new ExampleCommand('One'));
+      await commandBus.execute(new ExampleCommand('One'));
 
-    expect(executeMethod).toHaveBeenCalledTimes(1);
-    expect(executeMethod).toHaveBeenLastCalledWith(new ExampleCommand('One'));
-
-
-    await commandBus.execute(new ExampleCommand('Two'));
-
-    expect(executeMethod).toHaveBeenCalledTimes(2);
-    expect(executeMethod).toHaveBeenLastCalledWith(new ExampleCommand('Two'));
+      expect(executeMethod).toHaveBeenCalledTimes(1);
+      expect(executeMethod).toHaveBeenLastCalledWith(new ExampleCommand('One'));
 
 
-    await commandBus.execute(new ExampleCommand('Three'));
+      await commandBus.execute(new ExampleCommand('Two'));
 
-    expect(executeMethod).toHaveBeenCalledTimes(3);
-    expect(executeMethod).toHaveBeenLastCalledWith(new ExampleCommand('Three'));
+      expect(executeMethod).toHaveBeenCalledTimes(2);
+      expect(executeMethod).toHaveBeenLastCalledWith(new ExampleCommand('Two'));
+
+
+      await commandBus.execute(new ExampleCommand('Three'));
+
+      expect(executeMethod).toHaveBeenCalledTimes(3);
+      expect(executeMethod).toHaveBeenLastCalledWith(new ExampleCommand('Three'));
+    });
   });
 });

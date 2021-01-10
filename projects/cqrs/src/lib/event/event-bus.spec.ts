@@ -56,31 +56,33 @@ describe('EventBus', () => {
     expect(handler2).toBeInstanceOf(ExampleEventHandler2);
   });
 
-  it('should handle events using corresponding event handlers', async () => {
-    const handleMethod1 = spyOn(handler1, 'handle').and.callThrough();
-    const handleMethod2 = spyOn(handler2, 'handle').and.callThrough();
+  describe('publish', () => {
+    it('should handle events using corresponding event handlers', async () => {
+      const handleMethod1 = spyOn(handler1, 'handle').and.callThrough();
+      const handleMethod2 = spyOn(handler2, 'handle').and.callThrough();
 
-    await eventBus.publish(new ExampleEvent('One'));
+      await eventBus.publish(new ExampleEvent('One'));
 
-    expect(handleMethod1).toHaveBeenCalledTimes(1);
-    expect(handleMethod1).toHaveBeenLastCalledWith(new ExampleEvent('One'));
-    expect(handleMethod2).toHaveBeenCalledTimes(1);
-    expect(handleMethod2).toHaveBeenLastCalledWith(new ExampleEvent('One'));
-
-
-    await eventBus.publish(new ExampleEvent('Two'));
-
-    expect(handleMethod1).toHaveBeenCalledTimes(2);
-    expect(handleMethod1).toHaveBeenLastCalledWith(new ExampleEvent('Two'));
-    expect(handleMethod2).toHaveBeenCalledTimes(2);
-    expect(handleMethod2).toHaveBeenLastCalledWith(new ExampleEvent('Two'));
+      expect(handleMethod1).toHaveBeenCalledTimes(1);
+      expect(handleMethod1).toHaveBeenLastCalledWith(new ExampleEvent('One'));
+      expect(handleMethod2).toHaveBeenCalledTimes(1);
+      expect(handleMethod2).toHaveBeenLastCalledWith(new ExampleEvent('One'));
 
 
-    await eventBus.publish(new ExampleEvent('Three'));
+      await eventBus.publish(new ExampleEvent('Two'));
 
-    expect(handleMethod1).toHaveBeenCalledTimes(3);
-    expect(handleMethod1).toHaveBeenLastCalledWith(new ExampleEvent('Three'));
-    expect(handleMethod2).toHaveBeenCalledTimes(3);
-    expect(handleMethod2).toHaveBeenLastCalledWith(new ExampleEvent('Three'));
+      expect(handleMethod1).toHaveBeenCalledTimes(2);
+      expect(handleMethod1).toHaveBeenLastCalledWith(new ExampleEvent('Two'));
+      expect(handleMethod2).toHaveBeenCalledTimes(2);
+      expect(handleMethod2).toHaveBeenLastCalledWith(new ExampleEvent('Two'));
+
+
+      await eventBus.publish(new ExampleEvent('Three'));
+
+      expect(handleMethod1).toHaveBeenCalledTimes(3);
+      expect(handleMethod1).toHaveBeenLastCalledWith(new ExampleEvent('Three'));
+      expect(handleMethod2).toHaveBeenCalledTimes(3);
+      expect(handleMethod2).toHaveBeenLastCalledWith(new ExampleEvent('Three'));
+    });
   });
 });
