@@ -18,7 +18,7 @@ export interface CqrsFeatureOptions {
 export const CQRS_FEATURE_OPTIONS = new InjectionToken<CqrsFeatureOptions>('CQRS feature');
 
 @NgModule()
-export class CqrsFeatureModule {
+class CqrsFeatureModule {
   constructor(
     @Inject(CQRS_FEATURE_OPTIONS) options: CqrsFeatureOptions,
     injector: Injector,
