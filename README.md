@@ -1,4 +1,6 @@
-![Continuous Integration](https://github.com/ngry-project/cqrs/workflows/CI/badge.svg?branch=master)
+![build](https://github.com/ngry-project/cqrs/workflows/build/badge.svg?branch=master)
+![unit-tests](https://github.com/ngry-project/cqrs/workflows/unit-tests/badge.svg?branch=master)
+![code-style](https://github.com/ngry-project/cqrs/workflows/code-style/badge.svg?branch=master)
 
 ## Description
 
