@@ -30,10 +30,10 @@ jobs:
       - name: Check code style
         run: npm run lint
 
-      - name: Build package(s)
+      - name: Build
         run: npm run build
 
-      - name: Publish "cqrs" package
+      - name: Publish
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
