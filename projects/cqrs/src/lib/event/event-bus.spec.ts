@@ -30,34 +30,59 @@ class ExampleEventHandler2 implements EventHandler<ExampleEvent> {
 }
 
 describe('EventBus', () => {
-  let eventBus: EventBus;
-  let handler1: ExampleEventHandler1;
-  let handler2: ExampleEventHandler2;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        CqrsModule.forRoot(),
-        CqrsModule.forFeature({
-          events: [
-            ExampleEventHandler1,
-            ExampleEventHandler2,
-          ],
-        }),
-      ],
-    }).compileComponents();
-
-    eventBus = TestBed.inject(EventBus);
-    handler1 = TestBed.inject(ExampleEventHandler1);
-    handler2 = TestBed.inject(ExampleEventHandler2);
-
-    expect(eventBus).toBeInstanceOf(EventBus);
-    expect(handler1).toBeInstanceOf(ExampleEventHandler1);
-    expect(handler2).toBeInstanceOf(ExampleEventHandler2);
-  });
-
   describe('publish', () => {
-    it('should handle events using corresponding event handlers', async () => {
+    it('should handle the event using corresponding event handler', async () => {
+      await TestBed.configureTestingModule({
+        imports: [
+          CqrsModule.forRoot(),
+          CqrsModule.forFeature({
+            events: [
+              ExampleEventHandler1,
+            ],
+          }),
+        ],
+      }).compileComponents();
+
+      const eventBus = TestBed.inject(EventBus);
+      const handler1 = TestBed.inject(ExampleEventHandler1);
+
+      const handleMethod1 = spyOn(handler1, 'handle').and.callThrough();
+
+      await eventBus.publish(new ExampleEvent('One'));
+
+      expect(handleMethod1).toHaveBeenCalledTimes(1);
+      expect(handleMethod1).toHaveBeenLastCalledWith(new ExampleEvent('One'));
+
+
+      await eventBus.publish(new ExampleEvent('Two'));
+
+      expect(handleMethod1).toHaveBeenCalledTimes(2);
+      expect(handleMethod1).toHaveBeenLastCalledWith(new ExampleEvent('Two'));
+
+
+      await eventBus.publish(new ExampleEvent('Three'));
+
+      expect(handleMethod1).toHaveBeenCalledTimes(3);
+      expect(handleMethod1).toHaveBeenLastCalledWith(new ExampleEvent('Three'));
+    });
+
+    it('should handle the event using corresponding event handlers', async () => {
+      await TestBed.configureTestingModule({
+        imports: [
+          CqrsModule.forRoot(),
+          CqrsModule.forFeature({
+            events: [
+              ExampleEventHandler1,
+              ExampleEventHandler2,
+            ],
+          }),
+        ],
+      }).compileComponents();
+
+      const eventBus = TestBed.inject(EventBus);
+      const handler1 = TestBed.inject(ExampleEventHandler1);
+      const handler2 = TestBed.inject(ExampleEventHandler2);
+
       const handleMethod1 = spyOn(handler1, 'handle').and.callThrough();
       const handleMethod2 = spyOn(handler2, 'handle').and.callThrough();
 
@@ -83,6 +108,19 @@ describe('EventBus', () => {
       expect(handleMethod1).toHaveBeenLastCalledWith(new ExampleEvent('Three'));
       expect(handleMethod2).toHaveBeenCalledTimes(3);
       expect(handleMethod2).toHaveBeenLastCalledWith(new ExampleEvent('Three'));
+    });
+
+    it('should not throw an error when the event has no handlers', async () => {
+      await TestBed.configureTestingModule({
+        imports: [
+          CqrsModule.forRoot(),
+          CqrsModule.forFeature({}),
+        ],
+      }).compileComponents();
+
+      const eventBus = TestBed.inject(EventBus);
+
+      await expect(eventBus.publish(new ExampleEvent('One'))).resolves.not.toThrow();
     });
   });
 });
