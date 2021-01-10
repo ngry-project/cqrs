@@ -10,6 +10,7 @@
     "strictPropertyInitialization": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
