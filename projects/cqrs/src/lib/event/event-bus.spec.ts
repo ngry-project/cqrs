@@ -1,4 +1,3 @@
-import { take } from 'rxjs/operators';
 import { TestBed } from '@angular/core/testing';
 import { CqrsModule } from '../cqrs.module';
 import { EventBus } from './event-bus';
