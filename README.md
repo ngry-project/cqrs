@@ -8,8 +8,16 @@ Lightweight CQRS module for Angular.
 
 ## Installation
 
+Using NPM:
+
 ```bash
 npm i @ngry/cqrs
+```
+
+Using Yarn:
+
+```bash
+yarn add @ngry/cqrs
 ```
 
 ## Documentation
