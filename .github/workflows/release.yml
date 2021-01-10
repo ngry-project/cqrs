@@ -32,7 +32,9 @@ jobs:
         run: npm run test:coverage
 
       - name: Report coverage
-        run: npm run coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build (in prod mode)
         run: npm run build:prod
