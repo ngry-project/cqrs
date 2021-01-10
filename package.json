@@ -1,6 +1,28 @@
 {
-  "name": "cqrs",
-  "version": "0.0.0",
+  "name": "@ngry/cqrs",
+  "description": "Lightweight CQRS module for Angular",
+  "version": "10.0.1",
+  "keywords": [
+    "angular",
+    "cqrs",
+    "eventbus",
+    "commandbus",
+    "querybus",
+    "event",
+    "command",
+    "query",
+    "saga"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ngry-project/cqrs"
+  },
+  "maintainers": [
+    {
+      "name": "Alex Chugaev",
+      "url": "https://github.com/avchugaev"
+    }
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,36 +31,39 @@
     "test:watch": "ng test --watch",
     "lint": "ng lint"
   },
-  "private": true,
-  "dependencies": {
-    "@angular/animations": "~10.0.14",
-    "@angular/common": "~10.0.14",
-    "@angular/compiler": "~10.0.14",
-    "@angular/core": "~10.0.14",
-    "@angular/forms": "~10.0.14",
-    "@angular/platform-browser": "~10.0.14",
-    "@angular/platform-browser-dynamic": "~10.0.14",
-    "@angular/router": "~10.0.14",
-    "rxjs": "~6.5.5",
-    "tslib": "^2.0.0",
-    "zone.js": "~0.10.3"
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {
     "@angular-builders/jest": "^11.0.0",
-    "@angular-devkit/build-angular": "~0.1000.8",
-    "@angular-devkit/build-ng-packagr": "~0.1000.8",
     "@angular/cli": "~10.0.8",
+    "@angular/compiler": "~10.0.14",
     "@angular/compiler-cli": "~10.0.14",
+    "@angular-devkit/build-angular": "^0.1100.6",
+    "@angular-devkit/build-ng-packagr": "~0.1000.8",
+    "@angular/common": "~10.0.14",
+    "@angular/core": "~10.0.14",
+    "@angular/platform-browser": "~10.0.14",
+    "@angular/platform-browser-dynamic": "~10.0.14",
     "@types/jest": "^26.0.20",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
     "jest": "^26.6.3",
     "ng-packagr": "^10.0.0",
     "ts-node": "~8.3.0",
+    "tslib": "^2.0.0",
     "tslint": "~6.1.0",
     "typescript": "~3.9.5"
   },
+  "peerDependencies": {
+    "@angular/common": "~10.0.14",
+    "@angular/core": "~10.0.14",
+    "@angular/platform-browser": "~10.0.14",
+    "@angular/platform-browser-dynamic": "~10.0.14",
+    "rxjs": "~6.5.5",
+    "zone.js": "~0.10.3"
+  },
   "publish": {
-    "pkgRoot": "dist/cqrs"
+    "pkgRoot": "dist"
   }
 }
