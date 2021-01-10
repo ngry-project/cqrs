@@ -13,8 +13,8 @@ export * from './lib/query/query.interface';
 export * from './lib/query/query-bus';
 export * from './lib/query/query-handler';
 
+export * from './lib/operator/of-type';
+
 export * from './lib/saga/saga';
 
 export * from './lib/cqrs.module';
-
-export * from './lib/operator/of-type';
