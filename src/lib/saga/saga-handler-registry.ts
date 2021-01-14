@@ -5,7 +5,9 @@ import { CommandBus } from '../command/command-bus';
 import { EventBus } from '../event/event-bus';
 import { Saga } from './saga';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class SagaHandlerRegistry {
   constructor(
     private readonly eventBus: EventBus,

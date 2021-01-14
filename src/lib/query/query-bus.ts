@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { IQuery } from './query.interface';
 import { QueryHandlerRegistry } from './query-handler-registry';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class QueryBus {
 
   constructor(

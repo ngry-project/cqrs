@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { CommandHandler } from './command-handler';
 import { ICommand } from './command.interface';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class CommandHandlerRegistry {
   private readonly handlers = new Set<CommandHandler>();
 

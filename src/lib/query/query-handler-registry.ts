@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { QueryHandler } from './query-handler';
 import { IQuery } from './query.interface';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class QueryHandlerRegistry {
   private readonly handlers = new Set<QueryHandler>();
 

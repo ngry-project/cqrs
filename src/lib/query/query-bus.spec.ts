@@ -32,7 +32,6 @@ describe('QueryBus', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        CqrsModule.forRoot(),
         CqrsModule.forFeature({
           queries: [
             ExampleQueryHandler,

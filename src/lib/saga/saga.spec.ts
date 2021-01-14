@@ -2,11 +2,11 @@ import { merge, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { ofType } from '@ngry/rx';
 import { ICommand } from '../command/command.interface';
 import { CommandHandler } from '../command/command-handler';
 import { IEvent } from '../event/event.interface';
 import { EventBus } from '../event/event-bus';
-import { ofType } from '../operator/of-type';
 import { CqrsModule } from '../cqrs.module';
 import { Saga } from './saga';
 
@@ -173,7 +173,6 @@ describe('Saga', () => {
   it('should execute saga pipeline', async (done) => {
     await TestBed.configureTestingModule({
       imports: [
-        CqrsModule.forRoot(),
         CqrsModule.forFeature({
           commands: [
             FirstCommandHandler,

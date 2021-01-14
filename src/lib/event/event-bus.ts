@@ -2,7 +2,9 @@ import { Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { IEvent } from './event.interface';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class EventBus {
   private readonly _events = new Subject<IEvent>();
 

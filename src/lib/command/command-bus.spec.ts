@@ -34,7 +34,6 @@ describe('CommandBus', () => {
     it('should execute the command using corresponding command handler', async () => {
       await TestBed.configureTestingModule({
         imports: [
-          CqrsModule.forRoot(),
           CqrsModule.forFeature({
             commands: [
               ExampleCommandHandler,
@@ -69,7 +68,6 @@ describe('CommandBus', () => {
     it('should throw an error when the command has no handler', async () => {
       await TestBed.configureTestingModule({
         imports: [
-          CqrsModule.forRoot(),
           CqrsModule.forFeature({}),
         ],
       }).compileComponents();
@@ -82,7 +80,6 @@ describe('CommandBus', () => {
     it('should throw an error when the command has multiple handlers', async () => {
       await TestBed.configureTestingModule({
         imports: [
-          CqrsModule.forRoot(),
           CqrsModule.forFeature({
             commands: [
               ExampleCommandHandler,

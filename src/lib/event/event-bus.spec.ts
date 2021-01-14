@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-import { CqrsModule } from '../cqrs.module';
 import { EventBus } from './event-bus';
 import { IEvent } from './event.interface';
 
@@ -13,11 +12,7 @@ class ExampleEvent {
 describe('EventBus', () => {
   describe('publish', () => {
     it('should emit the event through the events subject', async () => {
-      await TestBed.configureTestingModule({
-        imports: [
-          CqrsModule.forRoot(),
-        ],
-      }).compileComponents();
+      await TestBed.configureTestingModule({}).compileComponents();
 
       const eventBus = TestBed.inject(EventBus);
       const events: Array<IEvent> = [];
