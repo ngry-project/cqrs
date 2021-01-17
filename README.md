@@ -14,13 +14,13 @@ Lightweight CQRS module for Angular.
 Using NPM:
 
 ```bash
-npm i @ngry/cqrs
+npm i @ngry/cqrs @ngry/rx
 ```
 
 Using Yarn:
 
 ```bash
-yarn add @ngry/cqrs
+yarn add @ngry/cqrs @ngry/rx
 ```
 
 ## Documentation
